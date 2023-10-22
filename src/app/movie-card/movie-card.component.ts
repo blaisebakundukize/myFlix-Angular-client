@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FetchApiDataService } from '../fetch-api-data.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { MovieDetailDialogComponent } from '../movie-detail-dialog/movie-detail-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
@@ -43,7 +43,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   openGenreDialog(genre: any): void {
-    this.dialog.open(MovieDetailsComponent, {
+    this.dialog.open(MovieDetailDialogComponent, {
       data: {
         title: genre.Name,
         content: genre.Description,
@@ -52,7 +52,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   openSynopsisDialog(synopsis: string): void {
-    this.dialog.open(MovieDetailsComponent, {
+    this.dialog.open(MovieDetailDialogComponent, {
       data: {
         title: 'Description',
         content: synopsis,
@@ -61,7 +61,7 @@ export class MovieCardComponent implements OnInit {
   }
 
   openDirectorDialog(director: any): void {
-    this.dialog.open(MovieDetailsComponent, {
+    this.dialog.open(MovieDetailDialogComponent, {
       data: {
         title: director.Name,
         content: director.Bio,

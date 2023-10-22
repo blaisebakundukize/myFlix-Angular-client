@@ -10,7 +10,6 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
-import { AuthGuard } from './auth.guard';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,18 +20,14 @@ import { WelcomePageComponent } from './welcome-page/welcome-page.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { NavbarComponent } from './navbar/navbar.component';
-import { MovieDetailsComponent } from './movie-details/movie-details.component';
-import { ProfileViewComponent } from './profile-view/profile-view.component';
+import { ProfilePageComponent } from './profile-page/profile-page.component';
+import { MovieDetailDialogComponent } from './movie-detail-dialog/movie-detail-dialog.component';
 
 const appRoutes: Routes = [
   { path: 'welcome', component: WelcomePageComponent },
-  { path: 'movies', component: MovieCardComponent, canActivate: [AuthGuard] },
-  {
-    path: 'profile',
-    component: ProfileViewComponent,
-    canActivate: [AuthGuard],
-  },
-  { path: '', redirectTo: 'welcome', pathMatch: 'full' },
+  { path: 'movies', component: MovieCardComponent },
+  { path: 'profile', component: ProfilePageComponent },
+  { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
 @NgModule({
@@ -43,8 +38,8 @@ const appRoutes: Routes = [
     MovieCardComponent,
     WelcomePageComponent,
     NavbarComponent,
-    ProfileViewComponent,
-    MovieDetailsComponent,
+    ProfilePageComponent,
+    MovieDetailDialogComponent,
   ],
   imports: [
     BrowserModule,

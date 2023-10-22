@@ -12,11 +12,11 @@ type User = {
 };
 
 @Component({
-  selector: 'app-profile-view',
-  templateUrl: './profile-view.component.html',
-  styleUrls: ['./profile-view.component.scss'],
+  selector: 'app-profile-page',
+  templateUrl: './profile-page.component.html',
+  styleUrls: ['./profile-page.component.scss'],
 })
-export class ProfileViewComponent implements OnInit {
+export class ProfilePageComponent implements OnInit {
   user: User = {};
 
   @Input() userData = { Username: '', Password: '', Email: '' };
@@ -30,10 +30,10 @@ export class ProfileViewComponent implements OnInit {
   ngOnInit(): void {
     const user = this.getUser();
 
-    // if (!user._id) {
-    //   this.router.navigate(['welcome']);
-    //   return;
-    // }
+    if (!user._id) {
+      this.router.navigate(['welcome']);
+      return;
+    }
 
     this.user = user;
     this.userData = {
