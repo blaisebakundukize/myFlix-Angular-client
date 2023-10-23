@@ -9,8 +9,7 @@ import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
-const apiUrl = 'https://my-flix-api-esd8.onrender.com';
-
+const apiUrl = 'https://my-flix-api-esd8.onrender.com/';
 @Injectable({
   providedIn: 'root',
 })
@@ -26,7 +25,7 @@ export class FetchApiDataService {
    */
   public userRegistration(userDetails: any): Observable<any> {
     return this.http
-      .post(apiUrl + '/users', userDetails)
+      .post(apiUrl + 'users', userDetails)
       .pipe(catchError(this.handleError));
   }
 
@@ -37,13 +36,8 @@ export class FetchApiDataService {
    */
   public userLogin(userDetails: any): Observable<any> {
     return this.http
-      .post(apiUrl + '/login?' + new URLSearchParams(userDetails), {})
+      .post(apiUrl + 'login?' + new URLSearchParams(userDetails), {})
       .pipe(catchError(this.handleError));
-  }
-
-  isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user') || '{}');
-    return user && user.Token !== null;
   }
 
   /**
@@ -53,7 +47,7 @@ export class FetchApiDataService {
   getAllMovies(): Observable<any> {
     const token = localStorage.getItem('token');
     return this.http
-      .get(apiUrl + '/movies', {
+      .get(apiUrl + 'movies', {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -63,14 +57,13 @@ export class FetchApiDataService {
 
   /**
    * Making the api call for the get one movie endpoint
-   * @param movieId
+   * @param title
    * @returns an observable with a movie object
    */
-  getOneMovie(movieId: string): Observable<any> {
+  getOneMovie(title: string): Observable<any> {
     const token = localStorage.getItem('token');
-
     return this.http
-      .get(apiUrl + '/movies/' + movieId, {
+      .get(apiUrl + 'movies/' + title, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -161,7 +154,7 @@ export class FetchApiDataService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
     return this.http
-      .put(apiUrl + '/users/' + user.Username, updatedUser, {
+      .put(apiUrl + 'users/' + user.Username, updatedUser, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -178,7 +171,7 @@ export class FetchApiDataService {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     const token = localStorage.getItem('token');
     return this.http
-      .delete(apiUrl + '/users/' + user._id, {
+      .delete(apiUrl + 'users/' + user._id, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),
@@ -200,7 +193,7 @@ export class FetchApiDataService {
 
     return this.http
       .put(
-        apiUrl + `/users/${user.Username}/${movieId}`,
+        apiUrl + `users/${user.Username}/${movieId}`,
         {},
         {
           headers: new HttpHeaders({
@@ -228,7 +221,7 @@ export class FetchApiDataService {
     localStorage.setItem('user', JSON.stringify(user));
 
     return this.http
-      .delete(apiUrl + `/users/${user.Username}/${movieId}`, {
+      .delete(apiUrl + `users/${user.Username}/${movieId}`, {
         headers: new HttpHeaders({
           Authorization: 'Bearer ' + token,
         }),

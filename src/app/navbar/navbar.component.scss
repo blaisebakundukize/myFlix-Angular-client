@@ -2,8 +2,15 @@
   position: sticky;
   top: 0;
   z-index: 1000;
+  background-color: var(--secondary-bg-color);
+  color: var(--primary-text-color);
+  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
 }
 
 .example-spacer {
   flex: 1 1 auto;
+}
+img {
+  height: auto;
+  width: 20%;
 }

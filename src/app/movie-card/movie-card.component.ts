@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { FetchApiDataService } from '../fetch-api-data.service';
+import { FetchApiDataService } from '../fetch-api-data.service'
 import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { MovieDetailsComponent } from '../movie-details/movie-details.component';
+import { MovieDetailDialogComponent } from '../movie-detail-dialog/movie-detail-dialog.component';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-movie-card',
   templateUrl: './movie-card.component.html',
-  styleUrls: ['./movie-card.component.scss'],
+  styleUrls: ['./movie-card.component.scss']
 })
 export class MovieCardComponent implements OnInit {
   movies: any[] = [];
@@ -17,7 +17,7 @@ export class MovieCardComponent implements OnInit {
     public dialog: MatDialog,
     public snackBar: MatSnackBar,
     public router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     const user = localStorage.getItem('user');
@@ -43,34 +43,34 @@ export class MovieCardComponent implements OnInit {
   }
 
   openGenreDialog(genre: any): void {
-    this.dialog.open(MovieDetailsComponent, {
+    this.dialog.open(MovieDetailDialogComponent, {
       data: {
         title: genre.Name,
         content: genre.Description,
-      },
-    });
+      }
+    })
   }
 
   openSynopsisDialog(synopsis: string): void {
-    this.dialog.open(MovieDetailsComponent, {
+    this.dialog.open(MovieDetailDialogComponent, {
       data: {
-        title: 'Description',
+        title: "Description",
         content: synopsis,
-      },
-    });
+      }
+    })
   }
 
   openDirectorDialog(director: any): void {
-    this.dialog.open(MovieDetailsComponent, {
+    this.dialog.open(MovieDetailDialogComponent, {
       data: {
         title: director.Name,
         content: director.Bio,
-      },
-    });
+      }
+    })
   }
 
   isFavorite(id: string): boolean {
-    return this.fetchApiData.isFavoriteMovie(id);
+    return this.fetchApiData.isFavoriteMovie(id)
   }
 
   /**
@@ -80,16 +80,16 @@ export class MovieCardComponent implements OnInit {
   removeFavorite(id: string): void {
     this.fetchApiData.deleteFavoriteMovie(id).subscribe(() => {
       this.snackBar.open('removed from favorites', 'OK', {
-        duration: 2000,
-      });
+        duration: 2000
+      })
     });
   }
 
   addFavorite(id: string): void {
     this.fetchApiData.addFavoriteMovie(id).subscribe(() => {
       this.snackBar.open('added to favorites', 'OK', {
-        duration: 2000,
-      });
+        duration: 2000
+      })
     });
   }
 }
