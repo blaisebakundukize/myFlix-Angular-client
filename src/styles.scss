@@ -28,8 +28,9 @@ $myFlix-Angular-client-theme: mat.define-light-theme(
 :root {
   --mat-card-title-text-size: 20px;
   --primary-bg-color: #0d0f21;
-  --secondary-bg-color: #215291;
+  --secondary-bg-color: #3f50b5;
   --primary-text-color: #e6e6e6;
+  --secondary-text-color: #ffc007;
 }
 
 html,
@@ -51,5 +52,4 @@ a:visited {
 }
 button {
   cursor: pointer;
-  box-shadow: inset 0px -20px 16px -3px rgba(0, 0, 0, 0.1);
 }

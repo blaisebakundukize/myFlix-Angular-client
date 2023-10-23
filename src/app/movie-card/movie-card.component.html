@@ -1,5 +1,5 @@
 <div class="movie-page">
-  <mat-card *ngFor="let movie of movies;" class="movie-card">
+  <mat-card *ngFor="let movie of movies;">
     <mat-card-header class="movie-header">
       <mat-card-title>{{movie.Title}}</mat-card-title>
       <mat-card-subtitle>Directed by: {{movie.Director.Name}}</mat-card-subtitle>
@@ -15,12 +15,10 @@
       <button mat-button color="primary" (click)="openSynopsisDialog(movie.Description)">
         Synopsis
       </button>
-      <button class="fave-button" *ngIf="!isFavorite(movie._id)" mat-icon-button (click)="addFavorite(movie._id)"
-        matTooltip="Add to favorites">
+      <button class="fave-button" *ngIf="!isFavorite(movie._id)" mat-icon-button (click)="addFavorite(movie._id)" matTooltip="Add to favorites">
         <mat-icon>favorite_border</mat-icon>
       </button>
-      <button class="fave-button" *ngIf="isFavorite(movie._id)" mat-icon-button (click)="removeFavorite(movie._id)"
-        matTooltip="Remove from favorites">
+      <button class="fave-button" *ngIf="isFavorite(movie._id)" mat-icon-button (click)="removeFavorite(movie._id)" matTooltip="Remove from favorites">
         <mat-icon>favorite</mat-icon>
       </button>
     </mat-card-actions>
