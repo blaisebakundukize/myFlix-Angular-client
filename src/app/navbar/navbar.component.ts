@@ -16,12 +16,6 @@ export class NavbarComponent {
   logoutUser(): void {
     localStorage.removeItem('user');
     localStorage.removeItem('token');
-    this.fetchApiData.isLoggedIn = false; // Update the authentication status
     this.router.navigate(['welcome']);
-    this.reloadPage();
-  }
-  reloadPage(): void {
-    // Use JavaScript to reload the page
-    location.reload();
   }
 }

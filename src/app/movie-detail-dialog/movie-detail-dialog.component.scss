@@ -1,0 +1,27 @@
+.custom-info-dialog {
+  background-color: var(--primary-bg-color);
+  border-radius: 10px;
+  height: fit-content;
+  max-width: 800px;
+  align-items: center;
+
+  .custom-card-header {
+    mat-card-title {
+      font-size: x-large;
+      font-weight: 500;
+      margin-bottom: 10px;
+      color: var(--primary-text-color);
+    }
+  }
+
+  .custom-card-actions {
+    button {
+      background-color: var(--secondary-text-color);
+      color: var(--primary-bg-color);
+      font-weight: 600;
+
+      margin: 15px;
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+  }
+}

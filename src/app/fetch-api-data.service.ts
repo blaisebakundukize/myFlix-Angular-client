@@ -10,12 +10,10 @@ import { map } from 'rxjs/operators';
 
 //Declaring the api url that will provide data for the client app
 const apiUrl = 'https://my-flix-api-esd8.onrender.com/';
-
 @Injectable({
   providedIn: 'root',
 })
 export class FetchApiDataService {
-  isLoggedIn = false; // Initialize as false
   // Inject the HttpClient module to the constructor params
   // This will provide HttpClient to the entire class, making it available via this.http
   constructor(private http: HttpClient) {}
@@ -39,13 +37,7 @@ export class FetchApiDataService {
   public userLogin(userDetails: any): Observable<any> {
     return this.http
       .post(apiUrl + 'login?' + new URLSearchParams(userDetails), {})
-      .pipe(
-        catchError(this.handleError),
-        map((data) => {
-          this.isLoggedIn = true; // Set isLoggedIn to true on successful login
-          return data;
-        })
-      );
+      .pipe(catchError(this.handleError));
   }
 
   /**
