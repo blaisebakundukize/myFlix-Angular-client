@@ -30,7 +30,9 @@ const appRoutes: Routes = [
   { path: '', redirectTo: 'welcome', pathMatch: 'prefix' },
 ];
 
-
+/**
+ * Main application module that defines components and their dependencies.
+ */
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,7 @@ const appRoutes: Routes = [
     WelcomePageComponent,
     NavbarComponent,
     ProfilePageComponent,
-    MovieDetailDialogComponent
+    MovieDetailDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +61,6 @@ const appRoutes: Routes = [
     RouterModule.forRoot(appRoutes),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -111,18 +111,6 @@ export class FetchApiDataService {
   getOneUser(username: string): Observable<any> {
     const user = JSON.parse(localStorage.getItem('user') || '{}');
     return user;
-    // This endpoint does not exist but this is how it would look
-    // const username = localStorage.getItem('user');
-    // const token = localStorage.getItem('token');
-    // return this.http.get(apiUrl + 'users/' + user, {
-    //   headers: new HttpHeaders(
-    //     {
-    //       Authorization: 'Bearer ' + token,
-    //     })
-    // }).pipe(
-    //   map(this.extractResponseData),
-    //   catchError(this.handleError)
-    // );
   }
 
   /**
